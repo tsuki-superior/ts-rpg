@@ -1,5 +1,6 @@
 .RECIPEPREFIX=:
 
-nichijouadvanced:
+tsrpg:
+
 
 

@@ -1,3 +1,4 @@
+
 class Image
 {
     Image(void);
