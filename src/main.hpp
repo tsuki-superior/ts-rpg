@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <ostream>
 #include <iostream>
 #include <duktape.h>
 
