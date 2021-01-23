@@ -25,6 +25,10 @@ namespace utils
 	}
 }
 
-bool init(SDL_Window *window, SDL_Renderer *renderer);
-void quit(SDL_Window *window, SDL_Renderer *renderer);
-void update(SDL_Event e);
+class Engine
+{
+public:
+	bool init(SDL_Window *window, SDL_Renderer *renderer);
+	void quit(SDL_Window *window, SDL_Renderer *renderer);
+	void update(SDL_Event e);
+};

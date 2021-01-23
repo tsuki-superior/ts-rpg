@@ -5,17 +5,19 @@ SDL_Renderer *renderer = NULL;
 
 int main()
 {
-	if(init(window, renderer))
+	Engine engine;
+
+	if(engine.init(window, renderer))
 	{
 		SDL_Event event;
 
 		while(running)
 		{
-			update(event);
+			engine.update(event);
 		}
 	}
 	
-	quit(window, renderer);
+	engine.quit(window, renderer);
 	utils::Log("Cleaned up");
 
 	return 0;

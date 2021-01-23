@@ -2,7 +2,7 @@
 
 bool running = true;
 
-bool init(SDL_Window *window = NULL, SDL_Renderer *renderer = NULL)
+bool Engine::init(SDL_Window *window = NULL, SDL_Renderer *renderer = NULL)
 {
 	bool success = true;
 
@@ -41,14 +41,14 @@ bool init(SDL_Window *window = NULL, SDL_Renderer *renderer = NULL)
 	return success;
 }
 
-void quit(SDL_Window *window, SDL_Renderer *renderer)
+void Engine::quit(SDL_Window *window, SDL_Renderer *renderer)
 {
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
 
-void update(SDL_Event e)
+void Engine::update(SDL_Event e)
 {
 	while(SDL_PollEvent(&e) != 0)
 	{
