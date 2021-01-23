@@ -1,9 +1,6 @@
 #include "include/Engine.hpp"
 #include "image/Image.hpp"
 
-SDL_Window *window = NULL;
-SDL_Renderer *renderer = NULL;
-
 int main()
 {
 	Engine engine;
