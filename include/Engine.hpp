@@ -1,4 +1,9 @@
 #pragma once
+
+#ifndef ENGINE_HPP
+#define ENGINE_HPP
+
+#include <vector>
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -34,3 +39,5 @@ public:
 	SDL_Window *window = NULL;
 	SDL_Renderer *renderer = NULL;
 };
+
+#endif

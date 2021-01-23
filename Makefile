@@ -1,7 +1,7 @@
 CC=g++
 LFLAGS=-lSDL2 -lSDL2_image
 
-main: main.o engine.o image.o
+main: main.o engine.o image.o 
 	$(CC) main.o engine.o image.o -o main $(LFLAGS)
 
 main.o: main.cpp
