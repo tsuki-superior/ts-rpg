@@ -1,23 +1,17 @@
-.RECIPEPREFIX=:
+CC=g++
+LFLAGS=-lSDL2 -lSDL2_image
 
-BUILD_DIR=$(pwd)/build
+main: main.o engine.o
+	$(CC) main.o engine.o -o main $(LFLAGS)
 
-CC=gcc
-CC_FLAGS=-O3 $(shell sdl2-config --cflags)
+main.o: main.cpp
+	$(CC) -c main.cpp
 
-CPP=g++
-CPP_FLAGS=-O3 $(shell sdl2-config --cflags)
+engine.o: src/engine.cpp include/Engine.hpp
+	$(CC) -c src/engine.cpp
 
-LD=ld.gold
-LD_FLAGS= $(shell sdl2-config --libs) 
+clean:
+	rm *.o main
 
-$(BUILD_DIR)/tsrpg: $(BUILD_DIR)/main.o 
-
-$(BUILD_DIR)/main.o: 
-
-$(BUILD_DIR)/sprite.o:
-
-$(BUILD_DIR)/image.o:
-
-$(BUILD_DIR)/graphic.o:
-
+run:
+	./main
