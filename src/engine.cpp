@@ -2,7 +2,7 @@
 
 bool running = true;
 
-bool Engine::init(SDL_Window *window = NULL, SDL_Renderer *renderer = NULL)
+bool Engine::init()
 {
 	bool success = true;
 
@@ -41,7 +41,7 @@ bool Engine::init(SDL_Window *window = NULL, SDL_Renderer *renderer = NULL)
 	return success;
 }
 
-void Engine::quit(SDL_Window *window, SDL_Renderer *renderer)
+void Engine::quit()
 {
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);

@@ -28,7 +28,9 @@ namespace utils
 class Engine
 {
 public:
-	bool init(SDL_Window *window, SDL_Renderer *renderer);
-	void quit(SDL_Window *window, SDL_Renderer *renderer);
+	bool init();
+	void quit();
 	void update(SDL_Event e);
+	SDL_Window *window = NULL;
+	SDL_Renderer *renderer = NULL;
 };

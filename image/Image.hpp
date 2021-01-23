@@ -4,5 +4,5 @@
 class Image
 {
 public:
-	SDL_Texture *loadFromFile(SDL_Renderer *renderer, std::string path);
+	SDL_Texture *loadFromFile(SDL_Renderer *gRenderer, std::string path);
 };

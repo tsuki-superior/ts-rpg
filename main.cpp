@@ -9,20 +9,24 @@ int main()
 	Engine engine;
 	Image image;
 
-	if(engine.init(window, renderer))
+	if(engine.init())
 	{
+		SDL_Texture *sampleTexture = image.loadFromFile(engine.renderer, "red.png");
+		
 		SDL_Event event;
-
+	
 		while(running)
 		{
 			engine.update(event);
+			SDL_RenderClear(engine.renderer);	
+			SDL_RenderCopy(engine.renderer, sampleTexture, NULL, NULL);
+			SDL_RenderPresent(engine.renderer);
+
 		}
 
-		image.loadFromFile(renderer, "red.png");
-		SDL_RenderPresent(renderer);
 	}
 	
-	engine.quit(window, renderer);
+	engine.quit();
 	utils::Log("Cleaned up");
 
 	return 0;
