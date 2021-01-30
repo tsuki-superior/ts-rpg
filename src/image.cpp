@@ -28,3 +28,8 @@ void Image::loadFromFile(SDL_Renderer *gRenderer, std::string path)
         SDL_FreeSurface(loaded_surface);
     }
 }
+
+SDL_Texture *Image::getTexture()
+{
+	return texture;
+}

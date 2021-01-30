@@ -8,9 +8,10 @@ public:
 	//Load a file into this object
 	void loadFromFile(SDL_Renderer *gRenderer, std::string path);
 	
-	SDL_Texture *texture;
+	SDL_Texture *getTexture();	
 
 private:
+	SDL_Texture *texture;
 	//The width of the image
 	uint16_t width;
 	//The height of the image

@@ -1,7 +1,7 @@
 #include "../include/engine.hpp"
 
 bool running = true;
-bool DEBUG = true;
+bool DEBUG = false;
 
 Engine::Engine()
 {
