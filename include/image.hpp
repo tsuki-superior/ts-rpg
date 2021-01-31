@@ -1,5 +1,7 @@
 #pragma once
-#include "engine.hpp"
+#include "log.hpp"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 class Image
 {

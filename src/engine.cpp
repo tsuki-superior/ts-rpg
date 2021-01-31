@@ -1,7 +1,6 @@
 #include "../include/engine.hpp"
 
 bool running = true;
-bool DEBUG = false;
 
 Engine::Engine()
 {
@@ -57,5 +56,27 @@ void Engine::update(SDL_Event e)
 		{
 			running = false;
 		}
+		else if(e.type == SDL_KEYDOWN)
+		{
+			if(e.key.keysym.sym == SDLK_g)
+			{
+				utils::Log("g");
+			}
+
+		}
 	}
+}
+
+Engine::Entity::Entity(Image pImage, Vector2f pos, Size s)
+:image(pImage)
+{
+	renderRect.x = pos.getX();
+	renderRect.y = pos.getY();
+	renderRect.w = s.getW();
+	renderRect.h = s.getH();
+}
+
+void Engine::Entity::render(SDL_Renderer *renderer)
+{
+	SDL_RenderCopy(renderer, image.getTexture(), NULL, &renderRect);
 }

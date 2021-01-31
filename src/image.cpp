@@ -1,9 +1,8 @@
-#include <stdint.h>
 #include "../include/image.hpp"
 
 Image::Image(SDL_Renderer *gRenderer, std::string path)
 {
-    loadFromFile(gRenderer,path);
+    loadFromFile(gRenderer, path);
 }
 
 void Image::loadFromFile(SDL_Renderer *gRenderer, std::string path)

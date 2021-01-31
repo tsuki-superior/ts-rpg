@@ -1,6 +1,5 @@
 #pragma once
-#include "vector2f.hpp"
-#include "image.hpp"
+#include <iostream>
 
 class Vector2f
 {
