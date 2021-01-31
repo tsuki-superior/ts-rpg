@@ -52,27 +52,30 @@ void Engine::update(SDL_Event e)
 {
 	while (SDL_PollEvent(&e) != 0)
 	{
-		if (e.type == SDL_QUIT)
+		switch (e.type)
 		{
+		case SDL_QUIT:
 			running = false;
-		}
-		else if(e.type == SDL_KEYDOWN)
-		{
-			if(e.key.keysym.sym == SDLK_g)
+			break;
+		case SDL_KEYDOWN:
+			if (e.key.keysym.sym == SDLK_g)
 			{
 				utils::Log("G");
 			}
+			break;
+		default:
+			break;
 		}
 	}
 }
 
-Engine::Entity::Entity(Image pImage, Vector2f pos, Size s)
-:image(pImage), x(pos.getX()), y(pos.getY()), h(s.getH()), w(s.getW())
+Engine::Entity::Entity(Image pImage, Point pos, Size s)
 {
-	renderRect.x = pos.getX();
-	renderRect.y = pos.getY();
-	renderRect.w = s.getW();
-	renderRect.h = s.getH();
+	image = pImage;
+	renderRect.x = pos.x;
+	renderRect.y = pos.y;
+	renderRect.w = s.w;
+	renderRect.h = s.h;
 }
 
 void Engine::Entity::render(SDL_Renderer *renderer)

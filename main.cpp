@@ -15,44 +15,34 @@ int main()
 	int y = 50;
 
 	SDL_SetRenderDrawColor(engine.renderer, 255, 255, 255, 255);
-	
+
 	bool mPressed = false;
 
-	while(running)
+	while (running)
 	{
-		// engine.update(event);
-		
-		
-		while(SDL_PollEvent(&event) != 0)
+		engine.update(event);
+
+		while (SDL_PollEvent(&event) != 0)
 		{
-			if(event.type == SDL_QUIT)
+			if (event.type == SDL_QUIT)
 			{
 				running = false;
 			}
-			else if(event.type == SDL_KEYDOWN)
+			else if (event.type == SDL_KEYDOWN)
 			{
-				if(event.key.keysym.sym == SDLK_m)
+				if (event.key.keysym.sym == SDLK_m)
 				{
-					if(mPressed == false)
-					{
-						mPressed = true;
-					}
-					else if(mPressed == true)
-					{
-						mPressed = false;
-					}
+					mPressed = !mPressed;
 				}
-				
 			}
-
 		}
-	
-		Engine::Entity entity1(red, Vector2f(x, y), Size(200, 150));
-		
+
+		Engine::Entity entity1(red, Point(x, y), Size(200, 150));
+
 		SDL_RenderClear(engine.renderer);
 		entity1.render(engine.renderer);
 
-		if(mPressed)
+		if (mPressed)
 		{
 			SDL_GetMouseState(&x, &y);
 		}
@@ -61,7 +51,7 @@ int main()
 		// renderToViewport(engine.renderer, materia.getTexture(), viewports::top_right);
 		// renderToViewport(engine.renderer, material1.getTexture(), viewports::bottom_left);
 		// renderToViewport(engine.renderer, dragon.getTexture(), viewports::bottom_right);
-		
+
 		SDL_RenderPresent(engine.renderer);
 	}
 

@@ -1,5 +1,9 @@
 #include "../include/image.hpp"
 
+Image::Image()
+{
+}
+
 Image::Image(SDL_Renderer *gRenderer, std::string path)
 {
     loadFromFile(gRenderer, path);
@@ -30,5 +34,5 @@ void Image::loadFromFile(SDL_Renderer *gRenderer, std::string path)
 
 SDL_Texture *Image::getTexture()
 {
-	return texture;
+    return texture;
 }

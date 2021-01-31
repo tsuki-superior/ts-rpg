@@ -1,4 +1,6 @@
-#pragma once
+#ifndef __LOG_HPP__
+#define __LOG_HPP__
+
 #include <iostream>
 #include <SDL2/SDL.h>
 
@@ -10,13 +12,15 @@ namespace utils
 	{
 		if (is_error)
 		{
-			if(DEBUG)
+			if (DEBUG)
 				std::cout << "[LOGGER] " << message << ", " << SDL_GetError() << std::endl;
 		}
 		else
 		{
-			if(DEBUG)
+			if (DEBUG)
 				std::cout << "[LOGGER] " << message << std::endl;
 		}
 	}
-}
+} // namespace utils
+
+#endif

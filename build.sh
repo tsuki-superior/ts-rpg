@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 mkdir -pv build
 cd build
 cp -r ../media ./
