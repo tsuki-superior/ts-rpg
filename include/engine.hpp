@@ -16,8 +16,6 @@
 
 extern bool running;
 
- // namespace utils
-
 class Engine
 {
 public:
@@ -25,19 +23,24 @@ public:
 	~Engine();
 	bool init();
 	void quit();
-	void update(SDL_Event e);
 	SDL_Window *window = NULL;
 	SDL_Renderer *renderer = NULL;
-	
+	void update(SDL_Event e);
+		
 	class Entity
 	{
 	public:
 		Entity(Image pImage, Vector2f pos, Size s);
 		void render(SDL_Renderer *renderer);
-	
+		int x;
+		int y;
+		int w;
+		int h;
+
 	private:
 		Image image;
 		SDL_Rect renderRect;
 	};
+
 private:
 };

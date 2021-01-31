@@ -60,15 +60,14 @@ void Engine::update(SDL_Event e)
 		{
 			if(e.key.keysym.sym == SDLK_g)
 			{
-				utils::Log("g");
+				utils::Log("G");
 			}
-
 		}
 	}
 }
 
 Engine::Entity::Entity(Image pImage, Vector2f pos, Size s)
-:image(pImage)
+:image(pImage), x(pos.getX()), y(pos.getY()), h(s.getH()), w(s.getW())
 {
 	renderRect.x = pos.getX();
 	renderRect.y = pos.getY();

@@ -4,15 +4,15 @@
 class Vector2f
 {
 public:
-	Vector2f(float p_x, float p_y);
+	Vector2f(int p_x, int p_y);
 	
 	void print();
 
-	float getX();
+	int getX();
 	
-	float getY();
+	int getY();
 
 private:
-	float x;
-	float y;
+	int x;
+	int y;
 };
