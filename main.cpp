@@ -22,14 +22,14 @@ int main()
 		
 		SDL_RenderClear(engine.renderer);
 		
-		Engine::Entity entity1(Image(engine.renderer, "media/images/red.png"), Vector2f(x, y), Size(200, 150));
+		Engine::Entity entity1(red, Vector2f(x, y), Size(200, 150));
 		
 		entity1.render(engine.renderer);
 		
-		renderToViewport(engine.renderer, red.getTexture(), viewports::top_left);
-		renderToViewport(engine.renderer, materia.getTexture(), viewports::top_right);
-		renderToViewport(engine.renderer, material1.getTexture(), viewports::bottom_left);
-		renderToViewport(engine.renderer, dragon.getTexture(), viewports::bottom_right);
+		// renderToViewport(engine.renderer, red.getTexture(), viewports::top_left);
+		// renderToViewport(engine.renderer, materia.getTexture(), viewports::top_right);
+		// renderToViewport(engine.renderer, material1.getTexture(), viewports::bottom_left);
+		// renderToViewport(engine.renderer, dragon.getTexture(), viewports::bottom_right);
 		
 		SDL_RenderPresent(engine.renderer);
 	}
