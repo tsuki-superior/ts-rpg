@@ -1,20 +1,36 @@
-CC=g++
+.RECIPEPREFIX=]
+.PHONEY=clean run
+CPP=g++
+CPP_FLAGS=$(shell pkg-config --cflags --libs sdl2) 
 LFLAGS=-lSDL2 -lSDL2_image
 
-main: main.o engine.o image.o 
-	$(CC) main.o engine.o image.o -o main $(LFLAGS)
+BUILD_DIR=../build
+SRC_DIR=../src
+MEDIA_DIR=../media
 
-main.o: main.cpp
-	$(CC) -c main.cpp
+$(BUILD_DIR)/main: $(BUILD_DIR)/main.o $(BUILD_DIR)/engine.o $(BUILD_DIR)/image.o $(BUILD_DIR)/viewports.o $(BUILD_DIR)/vector2f.o $(BUILD_DIR)/size.o
+]$(CPP) $(BUILD_DIR)/main.o $(BUILD_DIR)/engine.o $(BUILD_DIR)/image.o $(BUILD_DIR)/viewports.o $(BUILD_DIR)/vector2f.o $(BUILD_DIR)/size.o -o  $@ $(LFLAGS)
 
-engine.o: src/engine.cpp include/Engine.hpp
-	$(CC) -c src/engine.cpp
+$(BUILD_DIR)/main.o: ../main.cpp
+]$(CPP) -o $@ $(CPP_FLAGS) $^
 
-image.o: image/image.cpp image/Image.hpp
-	$(CC) -c image/image.cpp
+$(BUILD_DIR)/size.o: $(SRC_DIR)/size.cpp ../include/size.hpp
+]$(CPP) -o $@ $(CPP_FLAGS) $^
+
+$(BUILD_DIR)/engine.o: $(SRC_DIR)/engine.cpp ../include/engine.hpp
+]$(CPP) -o $@ $(CPP_FLAGS) $^
+
+$(BUILD_DIR)/image.o: $(SRC_DIR)/image.cpp ../include/image.hpp
+]$(CPP) -o $@ $(CPP_FLAGS) $^
+
+$(BUILD_DIR)/viewports.o: $(SRC_DIR)/viewports.cpp ../include/viewports.hpp
+]$(CPP) -o $@ $(CPP_FLAGS) $^
+
+$(BUILD_DIR)/vector2f.o: $(SRC_DIR)/vector2f.cpp ../include/vector2f.hpp
+]$(CPP) -o $@ $(CPP_FLAGS) $^
 
 clean:
-	rm *.o main
+]rm -rfv build/*.o build/main
 
-run:
-	./main
+run: build/main
+]build/main

@@ -1,17 +1,17 @@
-#include "../include/Engine.hpp"
+#include "../include/engine.hpp"
 
 bool running = true;
 
-bool Engine::init()
+Engine::Engine()
 {
 	bool success = true;
 
-	if(SDL_Init(SDL_INIT_EVERYTHING) < 0)
+	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
 		utils::Log("Failed to initialize SDL2", true);
 		success = false;
-	}	
-	else if(!(IMG_Init(IMG_INIT_PNG) &IMG_INIT_PNG) || !(IMG_Init(IMG_INIT_JPG) &IMG_INIT_JPG))
+	}
+	else if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) || !(IMG_Init(IMG_INIT_JPG) & IMG_INIT_JPG))
 	{
 		utils::Log("Failed to initialize SDL_img", true);
 	}
@@ -20,7 +20,7 @@ bool Engine::init()
 		utils::Log("Initialized SDL2");
 		utils::Log("Initialized SDL2_img");
 		window = SDL_CreateWindow("Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_RESIZABLE);
-		if(window == NULL)
+		if (window == NULL)
 		{
 			utils::Log("Failed to create window", true);
 		}
@@ -28,34 +28,54 @@ bool Engine::init()
 		{
 			utils::Log("Created window");
 			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-			if(renderer == NULL)
+			if (renderer == NULL)
 			{
 				utils::Log("Failed to create renderer", true);
 			}
-			else{
+			else
+			{
 				utils::Log("Created renderer");
 			}
 		}
 	}
-
-	return success;
 }
 
-void Engine::quit()
+Engine::~Engine()
 {
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
+	utils::Log("Cleaned up");
 }
 
 void Engine::update(SDL_Event e)
 {
-	while(SDL_PollEvent(&e) != 0)
+	while (SDL_PollEvent(&e) != 0)
 	{
-		if(e.type == SDL_QUIT)
+		if (e.type == SDL_QUIT)
 		{
 			running = false;
+		}
+		else if(e.type == SDL_KEYDOWN)
+		{
+			if(e.key.keysym.sym == SDLK_g)
+			{
+				utils::Log("G");
+			}
 		}
 	}
 }
 
+Engine::Entity::Entity(Image pImage, Vector2f pos, Size s)
+:image(pImage), x(pos.getX()), y(pos.getY()), h(s.getH()), w(s.getW())
+{
+	renderRect.x = pos.getX();
+	renderRect.y = pos.getY();
+	renderRect.w = s.getW();
+	renderRect.h = s.getH();
+}
+
+void Engine::Entity::render(SDL_Renderer *renderer)
+{
+	SDL_RenderCopy(renderer, image.getTexture(), NULL, &renderRect);
+}
